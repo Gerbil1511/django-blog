@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-As a ... I want to ... so that I can ...
+###As a  I want to  so that I can 
 
 **Acceptance criteria** 
 

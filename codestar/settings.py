@@ -29,7 +29,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '8000-ajgreaves-blog-lesson-pl-lfv6kgfdws.us2.codeanyapp.com', '.herokuapp.com']
+ALLOWED_HOSTS = [
+                    'localhost',
+                    '8000-ajgreaves-blog-lesson-pl-lfv6kgfdws.us2.codeanyapp.com',
+                    '.herokuapp.com',
+                    '127.0.0.1',
+]
 
 
 # Application definition
@@ -89,6 +94,12 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+# List of trusted origis for requests which includes local development server URL
+# and production server URL
+CSRF_TRUSTED_ORIGINS = ['http://*.codeinstitute-ide.net/',
+                        'https://*.herokuapp.com/'
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

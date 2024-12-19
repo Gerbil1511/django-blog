@@ -98,7 +98,8 @@ DATABASES = {
 # List of trusted origis for requests which includes local development server URL
 # and production server URL
 CSRF_TRUSTED_ORIGINS = ['http://*.codeinstitute-ide.net/',
-                        'https://*.herokuapp.com/'
+                        'https://*.herokuapp.com/',
+                        'https://*codeanyapp.com/',
 ]
 
 # Password validation

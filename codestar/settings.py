@@ -17,7 +17,8 @@ if os.path.isfile('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent # Set the base directory for the project
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates') # Add the templates directory to the settings
 
 
 # Quick-start development settings - unsuitable for production
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'codestar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR], # Add the templates directory to the settings
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,7 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_DIRS = [os.path.join(BASE_DIR, 'static')] # Add the static directory to the settings
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

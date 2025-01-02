@@ -28,10 +28,11 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates') # Add the templates director
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
                     'localhost',
+                    '8000-nielmc-django-blog-tbkovgv7j0.us2.codeanyapp.com',
                     '.herokuapp.com',
                     '127.0.0.1',
 ]
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_summernote',
     'blog', # Add the blog app to the list of installed apps
+    'about', # Add the about app to the list of installed apps
 ]
 
 MIDDLEWARE = [

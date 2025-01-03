@@ -47,10 +47,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # Add the sites app to the list of installed apps
+    'allauth', # Add the allauth app to the list of installed apps
+    'allauth.account', # Add the allauth account app to the list of installed apps
+    'allauth.socialaccount', # Add the allauth social account app to the list of installed apps
     'django_summernote',
     'blog', # Add the blog app to the list of installed apps
     'about', # Add the about app to the list of installed apps
 ]
+
+SITE_ID = 1 # Add the site ID to the settings   
+LOGIN_REDIRECT_URL = '/' # Add the login redirect URL to the settings
+LOGOUT_REDIRECT_URL = '/' # Add the logout redirect URL to the settings
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware', # Add the allauth account middleware to the middleware
 ]
 
 ROOT_URLCONF = 'codestar.urls'
@@ -124,6 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = 'none' # Add the account email verification to the settings
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

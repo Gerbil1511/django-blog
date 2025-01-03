@@ -28,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates') # Add the templates director
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
                     'localhost',
@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth', # Add the allauth app to the list of installed apps
     'allauth.account', # Add the allauth account app to the list of installed apps
     'allauth.socialaccount', # Add the allauth social account app to the list of installed apps
+    'crispy_forms', # Add the crispy forms app to the list of installed apps
+    'crispy_bootstrap5', # Add the crispy bootstrap5 app to the list of installed apps
     'django_summernote',
     'blog', # Add the blog app to the list of installed apps
     'about', # Add the about app to the list of installed apps
@@ -59,6 +61,9 @@ INSTALLED_APPS = [
 SITE_ID = 1 # Add the site ID to the settings   
 LOGIN_REDIRECT_URL = '/' # Add the login redirect URL to the settings
 LOGOUT_REDIRECT_URL = '/' # Add the logout redirect URL to the settings
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -7,13 +7,15 @@ from .forms import CommentForm
 
 # Create your views here.
 
+# The PostList view
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = 'blog/index.html'
     paginate_by = 6
 
 
-def post_detail(request, slug):
+# The post_detail view
+def post_detail(request, slug): 
     """
     Display an individual :model:`blog.Post`.
 
@@ -45,13 +47,14 @@ def post_detail(request, slug):
             )
 
     comment_form = CommentForm()
-
+        
     return render(
         request,
         "blog/post_detail.html",
+        # context for when the template is rendered
         {"post": post,
-         "comments": comments,
-         "comment_count": comment_count,
-         "comment_form": comment_form,
-         },
+        "comments": comments,
+        "comment_count": comment_count,
+        "comment_form": comment_form,
+        },
     )

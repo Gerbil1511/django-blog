@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+
+
+
 if os.path.isfile('env.py'):
     import env
 
@@ -28,7 +31,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates') # Add the templates director
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
                     'localhost',
@@ -66,6 +69,8 @@ LOGOUT_REDIRECT_URL = '/' # Add the logout redirect URL to the settings
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -46,14 +46,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', # Add the static files app to the list of installed apps
+    'cloudinary_storage', # Add the cloudinary storage app to the list of installed apps
     'django.contrib.sites', # Add the sites app to the list of installed apps
     'allauth', # Add the allauth app to the list of installed apps
     'allauth.account', # Add the allauth account app to the list of installed apps
     'allauth.socialaccount', # Add the allauth social account app to the list of installed apps
     'crispy_forms', # Add the crispy forms app to the list of installed apps
     'crispy_bootstrap5', # Add the crispy bootstrap5 app to the list of installed apps
-    'django_summernote',
+    'django_summernote', # Add the django summernote app to the list of installed apps
+    'cloudinary', # Add the cloudinary app to the list of installed apps
     'blog', # Add the blog app to the list of installed apps
     'about', # Add the about app to the list of installed apps
 ]

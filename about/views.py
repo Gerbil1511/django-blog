@@ -24,8 +24,7 @@ def about_me(request):
         if collaborate_form.is_valid():
             collaborate_form.save()
             messages.add_message(request, messages.SUCCESS,
-                'Collaboration request received, thank you! I will endeavour to'
-                'reply to you within 2 working days.'
+                'Collaboration request received, thank you! I will endeavour to reply to you within 2 working days.'
             )
 
     about = About.objects.all().order_by('-updated_on').first()

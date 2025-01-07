@@ -14,7 +14,7 @@ class About(models.Model):
 
     def __str__(self):  # add the magic method
         return self.title  # ensure it returns the string title of the about page
-
+    
 
 class CollaborateRequest(models.Model):
     """

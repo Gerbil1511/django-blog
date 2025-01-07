@@ -78,8 +78,14 @@
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 {% for message in messages %}
+
+                <!-- John added this code -->
+                <h1>{{ message.tags }}</h1> <!-- for testing purposes -->
+                <!-- suggestion is to hard code css styles that were in bootstrap to overcome missing styling -->
+
+
                 <div class="alert {{ message.tags }} alert-dismissible
-                fade show" id="msg" role="alert">
+                fade show" id="msg" role="alert">   
                     {{ message | safe }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                     </button>

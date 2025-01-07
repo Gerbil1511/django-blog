@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 from django.contrib.messages import constants as messages
 import dj_database_url
 
@@ -32,13 +33,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
                     'localhost',
                     '8000-nielmc-django-blog-tbkovgv7j0.us2.codeanyapp.com',
                     '.herokuapp.com',
                     '127.0.0.1',
+                    '8000-gerbil1511-djangoblog-9p4lx5wtpsb.ws.codeinstitute-ide.net',
 ]
 
 
@@ -120,11 +122,15 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+if 'test' in sys.argv:
+    DATABASES['default'] ['ENGINE'] = 'django.db.backends.sqlite3'
+
 # List of trusted origis for requests which includes local development server URL
 # and production server URL
 CSRF_TRUSTED_ORIGINS = ['http://*.codeinstitute-ide.net/',
                         'https://*.herokuapp.com/',
                         'https://*codeanyapp.com/',
+                        'https://8000-gerbil1511-djangoblog-9p4lx5wtpsb.ws.codeinstitute-ide.net',
                         ]
 
 # Password validation

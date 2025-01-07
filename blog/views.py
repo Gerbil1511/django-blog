@@ -16,7 +16,7 @@ class PostList(generic.ListView):
 
 
 # The post_detail view
-def post_detail(request, slug): 
+def post_detail(request, slug):
     """
     Display an individual :model:`blog.Post`.
 
@@ -24,6 +24,12 @@ def post_detail(request, slug):
 
     ``post``
         An instance of :model:`blog.Post`.
+    ``comments``
+        All approved comments related to the post.
+    ``comment_count``
+        A count of all approved comments related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
 
     **Template:**
 
@@ -48,22 +54,33 @@ def post_detail(request, slug):
             )
 
     comment_form = CommentForm()
-        
+
     return render(
         request,
         "blog/post_detail.html",
         # context for when the template is rendered
         {"post": post,
-        "comments": comments,
-        "comment_count": comment_count,
-        "comment_form": comment_form,
-        },
+         "comments": comments,
+         "comment_count": comment_count,
+         "comment_form": comment_form,
+         },
     )
+
 
 #  the edit comment view
 def comment_edit(request, slug, comment_id):
+
     """
-    view to edit comments
+    Display an individual comment for editing.
+
+    **Context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        A single comment related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
     """
     if request.method == "POST":
 
@@ -79,14 +96,25 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request,
+                messages.ERROR, 'Error updating comment!'
+                )
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
 
 # the delete comment view
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    Delete an individual comment.
+
+    **Context**
+
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        A single comment related to the post.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -96,6 +124,7 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))

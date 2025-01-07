@@ -12,17 +12,18 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 import dj_database_url
-
 
 
 if os.path.isfile('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent # Set the base directory for the project
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates') # Add the templates directory to the settings
-
+# Set the base directory for the project
+BASE_DIR = Path(__file__).resolve().parent.parent
+# Add the templates directory to the settings
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -49,39 +50,38 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', # Add the static files app to the list of installed apps
-    'cloudinary_storage', # Add the cloudinary storage app to the list of installed apps
-    'django.contrib.sites', # Add the sites app to the list of installed apps
-    'allauth', # Add the allauth app to the list of installed apps
-    'allauth.account', # Add the allauth account app to the list of installed apps
+    'django.contrib.staticfiles',  # Add the static files app to the list of installed apps
+    'cloudinary_storage',  # Add the cloudinary storage app to the list of installed apps
+    'django.contrib.sites',  # Add the sites app to the list of installed apps
+    'allauth',  # Add the allauth app to the list of installed apps
+    'allauth.account',  # Add the allauth account app to the list of installed apps
     'allauth.socialaccount', # Add the allauth social account app to the list of installed apps
-    'crispy_forms', # Add the crispy forms app to the list of installed apps
-    'crispy_bootstrap5', # Add the crispy bootstrap5 app to the list of installed apps
-    'django_summernote', # Add the django summernote app to the list of installed apps
+    'crispy_forms',  # Add the crispy forms app to the list of installed apps
+    'crispy_bootstrap5',  # Add the crispy bootstrap5 app to the list of installed apps
+    'django_summernote',  # Add the django summernote app to the list of installed apps
     'cloudinary', # Add the cloudinary app to the list of installed apps
-    'blog', # Add the blog app to the list of installed apps
-    'about', # Add the about app to the list of installed apps
+    'blog',  # Add the blog app to the list of installed apps
+    'about',  # Add the about app to the list of installed apps
 ]
 
-SITE_ID = 1 # Add the site ID to the settings   
-LOGIN_REDIRECT_URL = '/' # Add the login redirect URL to the settings
-LOGOUT_REDIRECT_URL = '/' # Add the logout redirect URL to the settings
+SITE_ID = 1  # Add the site ID to the settings
+LOGIN_REDIRECT_URL = '/'  # Add the login redirect URL to the settings
+LOGOUT_REDIRECT_URL = '/'  # Add the logout redirect URL to the settings
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # Add whitenoise to the middleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add whitenoise to the middleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware', # Add the allauth account middleware to the middleware
+    'allauth.account.middleware.AccountMiddleware',  # Add the allauth account middleware to the middleware
 ]
 
 ROOT_URLCONF = 'codestar.urls'
@@ -89,7 +89,7 @@ ROOT_URLCONF = 'codestar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR], # Add the templates directory to the settings
+        'DIRS': [TEMPLATES_DIR],  # Add the templates directory to the settings
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,7 +125,7 @@ DATABASES = {
 CSRF_TRUSTED_ORIGINS = ['http://*.codeinstitute-ide.net/',
                         'https://*.herokuapp.com/',
                         'https://*codeanyapp.com/',
-]
+                        ]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -145,7 +145,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_EMAIL_VERIFICATION = 'none' # Add the account email verification to the settings
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Add the account email verification to the settings
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -158,13 +158,18 @@ USE_I18N = True
 
 USE_TZ = True
 
+MESSAGES_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_DIRS = [os.path.join(BASE_DIR, 'static')] # Add the static directory to the settings
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Add the staticfiles directory to the settings
+STATIC_DIRS = [os.path.join(BASE_DIR, 'static')]  # Add the static directory to the settings
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Add the staticfiles directory to the settings
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

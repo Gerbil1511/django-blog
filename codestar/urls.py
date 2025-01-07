@@ -19,9 +19,9 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    path('about/', include('about.urls'), name='about-urls'), # Add the about URLs to the list of   
-    path('accounts/', include('allauth.urls')), # Add the allauth URLs to the list of urlpatterns
-    path('admin/', admin.site.urls), # Add the admin URLs to the list of urlpatterns
-    path('summernote/', include('django_summernote.urls')), # Add the summernote URLs to the list of urlpatterns
-    path('', include('blog.urls'), name='blog.urls'), # Add the blog URLs to the list of urlpatterns
+    path('about/', include('about.urls'), name='about-urls'),  # Add the about URLs to the list of urlpatterns
+    path('accounts/', include('allauth.urls')),  # Add the allauth URLs to the list of urlpatterns
+    path('admin/', admin.site.urls),  # Add the admin URLs to the list of urlpatterns
+    path('summernote/', include('django_summernote.urls')),  # Add the summernote URLs to the list of urlpatterns
+    path('', include('blog.urls'), name='blog.urls'),  # Add the blog URLs to the list of urlpatterns
 ]

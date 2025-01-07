@@ -6,16 +6,16 @@ from .forms import CollaborateForm
 # Create your views here.
 def about_me(request):
     """
-    Renders the about page
-
-    **Template:**
-
-    :template:`about/about.html`
-
+    Renders the most recent information on the website auhtor
+    and allows user collaboration requests.
+    Displays an instance of :model:`about.About`.
     **Context**
-
     ``about``
-        An instance of :model:`about.About`
+        The most recent instance of :model:`about.About`
+    ``collaborate_form``
+        An instance of :form:`about.CollaborateForm`
+    **Template:**
+    :template:`about/about.html`
     """
 
 
@@ -24,7 +24,8 @@ def about_me(request):
         if collaborate_form.is_valid():
             collaborate_form.save()
             messages.add_message(request, messages.SUCCESS,
-                'Collaboration request received, thank you! I will endeavour to reply to you within 2 working days.'
+                'Collaboration request received, thank you! I will endeavour to'
+                'reply to you within 2 working days.'
             )
 
     about = About.objects.all().order_by('-updated_on').first()
